@@ -15,6 +15,6 @@ class TodoController extends Controller
     public function store(Request $request) {
         $form = $request->only('content');
         Todo::create($form);
-        return redirect('/');
+        return redirect('/')->with('message', 'Todoを作成しました');
     }
 }

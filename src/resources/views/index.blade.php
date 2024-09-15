@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+
+@if(session('message'))
+<div class="success">{{session('message')}}</div>
+@endif
+
 <div class="content">
     <form class="create" action="/todos" method="post">
         @csrf

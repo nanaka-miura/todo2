@@ -1,3 +1,9 @@
+.success {
+    background: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+    padding: 10px 20px;
+}
 .create {
     max-width: 1000px;
     margin: 0 auto;
