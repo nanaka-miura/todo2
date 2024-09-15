@@ -10,6 +10,16 @@
 <div class="success">{{session('message')}}</div>
 @endif
 
+@if($errors->any())
+<div class="error">
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 <div class="content">
     <form class="create" action="/todos" method="post">
         @csrf
@@ -31,9 +41,12 @@
         @foreach($todos as $todo)
         <tr class="list__row">
             <td class="list__update">
-                <form class="update" action="">
+                <form class="update" action="/todos/update" method="post">
+                    @method('patch')
+                    @csrf
+                    <input type="hidden" name='id' value="{{$todo->id}}">
                     <div class="update-form">
-                        <input class="update-form__input" type="text" value="{{$todo->content}}">
+                        <input class="update-form__input" type="text" name='content' value="{{$todo->content}}">
                     </div>
                     <div class=update-form__button>
                         <button class="update-form__button--submit" type="submit">更新</button>
@@ -41,7 +54,10 @@
                 </form>
             </td>
             <td class="list__delete">
-                <form class="delete" action="">
+                <form class="delete" action="/todos/delete" method="post">
+                    @method('delete')
+                    @csrf
+                    <input type="hidden" name="id" value="{{$todo->id}}">
                     <div class="delete-form__button">
                         <button class="delete-form__button--submit" type="submit">削除</button>
                     </div>
