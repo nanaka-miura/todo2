@@ -65,16 +65,19 @@
             </div>
         </div>
     </form>
+    <div class="table-wrapper">
     <table class="list">
         <tr class="list__row">
-            <th class="list__name">
-                <h2 class="todo__name">Todo</h2>
-                <h2 class="category__name">カテゴリ</h2>
+            <th class="todo__name">
+                <h2 class="todo__name--item">Todo</h2>
+            </th>
+            <th class="category__name">
+                <h2 class="category__name--item">カテゴリ</h2>
             </th>
         </tr>
         @foreach($todos as $todo)
         <tr class="list__row">
-            <td class="list__update">
+            <td class="list__todo">
                 <form class="update" action="/todos/update" method="post">
                     @method('patch')
                     @csrf
@@ -82,9 +85,13 @@
                     <div class="update-form">
                         <input class="update-form__input" type="text" name='content' value="{{$todo->content}}">
                     </div>
+            </td>
+            <td class="list__category">
                     <div class="update-form__category">
                         <p>{{$todo['category']['name']}}</p>
                     </div>
+            </td>
+            <td class="list__update">
                     <div class="update-form__button">
                         <button class="update-form__button--submit" type="submit">更新</button>
                     </div>
@@ -103,5 +110,6 @@
         </tr>
         @endforeach
     </table>
+    </div>
 </div>
 @endsection
