@@ -18,4 +18,13 @@ class CategoryController extends Controller
         Category::create($form);
         return redirect('categories')->with('message', 'カテゴリを作成しました');
     }
+
+    public function update(CategoryRequest $request)
+    {
+        $form = $request->only('name');
+        $id = $request->input('id');
+        unset($form['_token']);
+        Category::find($request->id)->update($form);
+        return redirect('/categories')->with('message', 'カテゴリを更新しました');
+    }
 }
