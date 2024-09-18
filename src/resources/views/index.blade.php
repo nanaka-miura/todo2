@@ -43,14 +43,14 @@
             </div>
         </div>
     </form>
-    <form class="search" action="" method="">
+    <form class="search" action="/todos/search" method="get">
         @csrf
         <div class="form__name">
             <h2>Todo検索</h2>
         </div>
         <div class="search-form">
             <div class="search-form__input">
-                <input type="text" name=''>
+                <input type="text" name='keyword'>
             </div>
             <div class="search-form__category">
                 <select class="search-form__category--select" name="category_id">
@@ -61,7 +61,7 @@
                 </select>
             </div>
             <div class="search-form__button">
-                <button class="search-form__button--submit">作成</button>
+                <button class="search-form__button--submit">検索</button>
             </div>
         </div>
     </form>
