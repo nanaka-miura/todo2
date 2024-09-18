@@ -23,19 +23,43 @@
 <div class="content">
     <form class="create" action="/todos" method="post">
         @csrf
+        <div class="form__name">
+            <h2>新規作成</h2>
+        </div>
         <div class="create-form">
             <div class="create-form__input">
                 <input type="text" name='content'>
+            </div>
+            <div class="create-form__category">
+                <select class="create-form__category--select" name="category"></select>
             </div>
             <div class="create-form__button">
                 <button class="create-form__button--submit">作成</button>
             </div>
         </div>
     </form>
+    <form class="search" action="" method="">
+        @csrf
+        <div class="form__name">
+            <h2>Todo検索</h2>
+        </div>
+        <div class="search-form">
+            <div class="search-form__input">
+                <input type="text" name=''>
+            </div>
+            <div class="search-form__category">
+                <select class="search-form__category--select" name="category"></select>
+            </div>
+            <div class="search-form__button">
+                <button class="search-form__button--submit">作成</button>
+            </div>
+        </div>
+    </form>
     <table class="list">
         <tr class="list__row">
-            <th>
-                <h2 class="list__name">Todo</h2>
+            <th class="list__name">
+                <h2 class="todo__name">Todo</h2>
+                <h2 class="category__name">カテゴリ</h2>
             </th>
         </tr>
         @foreach($todos as $todo)
@@ -48,7 +72,10 @@
                     <div class="update-form">
                         <input class="update-form__input" type="text" name='content' value="{{$todo->content}}">
                     </div>
-                    <div class=update-form__button>
+                    <div class="update-form__category">
+                        <input class="update-form__category--input" type="text">
+                    </div>
+                    <div class="update-form__button">
                         <button class="update-form__button--submit" type="submit">更新</button>
                     </div>
                 </form>
