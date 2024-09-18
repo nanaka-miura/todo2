@@ -27,4 +27,12 @@ class CategoryController extends Controller
         Category::find($request->id)->update($form);
         return redirect('/categories')->with('message', 'カテゴリを更新しました');
     }
+
+    public function destory(Request $request)
+    {
+        $form = $request->only('name');
+        $id = $request->input('id');
+        Category::find($request->id)->delete($form);
+        return redirect('/categories')->with('message','カテゴリを削除しました');
+    }
 }

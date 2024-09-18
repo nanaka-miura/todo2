@@ -54,8 +54,10 @@
                 </form>
             </td>
             <td class="list__delete">
-                <form class="delete" action="" method="">
-                    <input type="hidden" name="id" value="">
+                <form class="delete" action="/categories/delete" method="post">
+                    @csrf
+                    @method('delete')
+                    <input type="hidden" name="id" value="{{$category->id}}">
                     <div class="delete-form__button">
                         <button class="delete-form__button--submit" type="submit">削除</button>
                     </div>
